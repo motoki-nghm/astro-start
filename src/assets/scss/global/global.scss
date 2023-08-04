@@ -1,0 +1,9 @@
+@use '../olayout/olayout.scss';
+
+.js-toggle {
+  transition: color 0.6s;
+  &.is-inView {
+    color: #fff;
+    transition: color 0.6s;
+  }
+}

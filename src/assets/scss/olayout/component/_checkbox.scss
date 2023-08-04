@@ -1,0 +1,30 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Checkbox
+*/
+.#{$prefix}-checkbox {
+  $this: &;
+  width: pxToRem(25px);
+  height: pxToRem(25px);
+  margin: pxToRem(4px) pxToRem(8px);
+  border: 0;
+  outline: 0;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  appearance: none;
+
+  &:checked {
+    background-size: 60% 60%;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.16);
+  }
+}

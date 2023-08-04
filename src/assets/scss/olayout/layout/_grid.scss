@@ -1,0 +1,182 @@
+@charset "UTF-8";
+@use "sass:math";
+@use "../global" as *;
+//====================================
+//  Grid
+//====================================
+
+.#{$prefix}-grid {
+  $this: &;
+  --ol-grid-columns: #{$column};
+  display: grid;
+  grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      // Columns
+      // ----------------------------
+      @for $i from 1 through $column {
+        &[data-cols~="#{$device}:#{$i}"] {
+          --ol-grid-columns: #{$i};
+          grid-template-columns: repeat(var(--ol-grid-columns), minmax(0, 1fr));
+        }
+      }
+
+      // Rows
+      // ----------------------------
+      @for $i from 1 through $row {
+        &[data-rows~="#{$device}:#{$i}"] {
+          grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
+        }
+      }
+
+      // gap
+      // ----------------------------
+      @for $i from 0 through $space-range {
+        &[data-gap~="#{$device}:#{$i}"] {
+          gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+        &[data-gap-x~="#{$device}:#{$i}"] {
+          column-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+        &[data-gap-y~="#{$device}:#{$i}"] {
+          row-gap: calc((var(--#{$prefix}-space) * #{$i}) / 16 * 1rem);
+        }
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+
+    @each $device, $breakpoint in $breakpoints {
+      @include mq($device) {
+        // Alignment
+        // ----------------------------
+        &[data-align~="#{$device}:start"] {
+          align-items: flex-start;
+        }
+
+        &[data-align~="#{$device}:center"] {
+          align-items: center;
+        }
+
+        &[data-align~="#{$device}:end"] {
+          align-items: flex-end;
+        }
+
+        &[data-align~="#{$device}:top"] {
+          justify-content: flex-start;
+        }
+
+        &[data-align~="#{$device}:middle"] {
+          justify-content: center;
+        }
+
+        &[data-align~="#{$device}:bottom"] {
+          justify-content: flex-end;
+        }
+
+        // Column
+        // ----------------------------
+        @for $i from 1 through $column {
+          &[data-col~="#{$device}:#{$i}"] {
+            grid-column: span $i / span $i;
+          }
+
+          &[data-col-start~="#{$device}:#{$i}"] {
+            grid-column-start: $i;
+          }
+
+          &[data-col-end~="#{$device}:#{$i}"] {
+            grid-column-end: $i;
+          }
+        }
+
+        &[data-col~="#{$device}:full"] {
+          grid-column: 1 / -1;
+        }
+
+        &[data-col~="#{$device}:auto"] {
+          grid-column: auto;
+        }
+
+        &[data-col-start~="#{$device}:auto"] {
+          grid-column-start: auto;
+        }
+
+        &[data-col-end~="#{$device}:auto"] {
+          grid-column-end: auto;
+        }
+
+        // Row
+        // ----------------------------
+        @for $i from 1 through $row {
+          &[data-row~="#{$device}:#{$i}"] {
+            grid-row: span $i / span $i;
+          }
+
+          &[data-row-start~="#{$device}:#{$i}"] {
+            grid-row-start: $i;
+          }
+
+          &[data-row-end~="#{$device}:#{$i}"] {
+            grid-row-end: $i;
+          }
+        }
+
+        &[data-row~="#{$device}:full"] {
+          grid-row: 1 / -1;
+        }
+
+        &[data-row~="#{$device}:auto"] {
+          grid-row: auto;
+        }
+
+        &[data-row-start~="#{$device}:auto"] {
+          grid-row-start: auto;
+        }
+
+        &[data-row-end~="#{$device}:auto"] {
+          grid-row-end: auto;
+        }
+
+        // Order
+        // ----------------------------
+        &[data-order~="#{$device}:0"] {
+          order: 0;
+        }
+
+        @for $i from 1 through 3 {
+          &[data-order~="#{$device}:-#{$i}"] {
+            order: calc($i * -1);
+          }
+
+          &[data-order~="#{$device}:#{$i}"] {
+            order: $i;
+          }
+        }
+
+        // Over Container
+        // ----------------------------
+        &[data-over~="#{$device}:left"] {
+          margin-left: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
+        }
+        &[data-over~="#{$device}:right"] {
+          margin-right: calc(50% - 50vw + calc(var(--#{$prefix}-scrollbar-width) * 1px));
+        }
+        &[data-over~="#{$device}:clearLeft"] {
+          margin-left: 0;
+        }
+        &[data-over~="#{$device}:clearRight"] {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

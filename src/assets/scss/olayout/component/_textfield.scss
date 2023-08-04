@@ -1,0 +1,37 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  TextField
+*/
+.#{$prefix}-textfield {
+  $this: &;
+  display: block;
+  width: 100%;
+  padding: pxToRem(16px) pxToRem(20px);
+  border: 0;
+  border-radius: pxToRem(10px);
+  outline: 0;
+  background-color: #fff;
+  font-size: pxToRem(16px);
+  appearance: none;
+  @include mq(lg) {
+    padding: pxToRem(12px) pxToRem(20px);
+  }
+  @include mq(xxl) {
+    font-size: pxToRem(18px);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.16);
+  }
+
+  &::placeholder {
+    color: #a7a7a7;
+  }
+
+  &.-harf {
+    width: 50%;
+  }
+}

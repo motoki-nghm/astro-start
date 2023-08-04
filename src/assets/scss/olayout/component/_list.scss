@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  List
+*/
+.#{$prefix}-list {
+  $this: &;
+
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      &[data-type~="#{$device}:vertical"] {
+        display: block;
+      }
+      &[data-type~="#{$device}:holzontal"] {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  &__item {
+    #{$this}.-circle & {
+      padding-left: 1.375em;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 0.875em;
+        height: 0.875em;
+        margin-right: 0.5em;
+        margin-left: -1.375em;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+      &:not(:last-child) {
+        margin-bottom: pxToRem(16px);
+      }
+    }
+
+    @each $device, $breakpoint in $breakpoints {
+      @include mq($device) {
+        #{$this}[data-separator~="#{$device}:slash"] & {
+          &:not(:last-child)::after {
+            content: "/";
+            display: inline-block;
+            margin: 0 0.5em;
+          }
+        }
+        #{$this}[data-separator~="#{$device}:comma"] & {
+          &:not(:last-child)::after {
+            content: ", ";
+          }
+        }
+      }
+    }
+  }
+}

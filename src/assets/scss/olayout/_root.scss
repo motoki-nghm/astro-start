@@ -1,0 +1,18 @@
+:root {
+  /* カンプサイズ */
+  --ol-sm-design-width: 320;
+  --ol-lg-design-width: 1920;
+
+  /* スペース量の基準値 */
+  --ol-space: 10;
+
+  /* 色 */
+  --ol-main-color: brown;
+
+  /* 書体 */
+  --ol-primary-font-set: 'Noto Sans JP', sans-serif;
+  --en-font-set: 'Inter', sans-serif;
+
+  /* ページ内スクロールの種類 */
+  --ol-scroll-behavior: auto;
+}

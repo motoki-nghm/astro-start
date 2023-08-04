@@ -1,0 +1,17 @@
+@charset 'UTF-8';
+@use '../global' as *;
+
+/*
+  Keyframes
+*/
+
+@include keyframes(btnOpenTop) {
+  0% {
+    opacity: 1;
+    // font-size: small;
+  }
+  100% {
+    opacity: 0;
+    // font-size: larger;
+  }
+}

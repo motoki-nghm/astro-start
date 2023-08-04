@@ -1,0 +1,122 @@
+@charset 'UTF-8';
+@use 'sass:math';
+@use '../olayout/global' as *;
+@use '../olayout/component' as *;
+
+.btn {
+  position: fixed;
+  z-index: 1000;
+  top: pxToRem(200);
+  right: 20px;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: blue;
+  width: 40px;
+  height: 40px;
+  border: none;
+  visibility: hidden;
+}
+
+.line {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 3px;
+  & + & {
+    margin-top: 8px;
+  }
+  &.top {
+    animation: lineTopClose 0.3s ease forwards;
+    &.isOpen {
+      animation: lineTopOpen 0.3s ease forwards;
+    }
+  }
+  &.center {
+    animation: lineCenterClose 0.3s ease forwards;
+    &.isOpen {
+      animation: lineCenterOpen 0.3s ease forwards;
+    }
+  }
+  &.bottom {
+    animation: lineBottomClose 0.3s ease forwards;
+    &.isOpen {
+      animation: lineBottomOpen 0.3s ease forwards;
+    }
+  }
+}
+
+@keyframes lineTopOpen {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(10px) rotate(45deg);
+  }
+}
+
+@keyframes lineCenterOpen {
+  0% {
+    transform: scaleX(1);
+    transform-origin: center;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+  }
+}
+
+@keyframes lineBottomOpen {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+@keyframes lineTopClose {
+  0% {
+    transform: translateY(10px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(8px) rotate(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineCenterClose {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lineBottomClose {
+  0% {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+  60% {
+    transform: translateY(-8px) rotate(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,76 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Wrapper
+-----------------------------------------------------*/
+.#{$prefix}-wrapper {
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      // Position
+      // ----------------------------
+      &[data-position~="#{$device}:static"] {
+        position: static;
+      }
+      &[data-position~="#{$device}:relative"] {
+        position: relative;
+      }
+      &[data-position~="#{$device}:absolute"] {
+        position: absolute;
+      }
+      &[data-position~="#{$device}:fixed"] {
+        position: fixed;
+      }
+      &[data-position~="#{$device}:sticky"] {
+        position: sticky;
+      }
+
+      // overflw
+      // ----------------------------
+      &[data-over~="#{$device}:auto"] {
+        overflow: auto;
+      }
+      &[data-over~="#{$device}:hidden"] {
+        overflow: hidden;
+      }
+      &[data-over~="#{$device}:visible"] {
+        overflow: visible;
+      }
+      &[data-over~="#{$device}:scroll"] {
+        overflow: scroll;
+      }
+    }
+  }
+
+  // Background-color
+  &[data-bg="base"] {
+    background-color: var(--#{$prefix}-base-color);
+  }
+  &[data-bg="main"] {
+    background-color: var(--#{$prefix}-main-color);
+  }
+  &[data-bg="accent"] {
+    background-color: var(--#{$prefix}-accent-color);
+  }
+  &[data-bg="light"] {
+    background-color: var(--#{$prefix}-light-color);
+  }
+  &[data-bg="dark"] {
+    background-color: var(--#{$prefix}-dark-color);
+  }
+  &[data-bg="white"] {
+    background-color: #fff;
+  }
+  &[data-bg="block"] {
+    background-color: #000;
+  }
+
+  // border-color
+  &[data-border~="top"] {
+    border-top: 1px solid var(--#{$prefix}-light-color);
+  }
+  &[data-border~="bottom"] {
+    border-bottom: 1px solid var(--#{$prefix}-light-color);
+  }
+}

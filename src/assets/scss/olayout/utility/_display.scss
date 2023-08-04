@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Display
+-----------------------------------------------------*/
+.#{$prefix}-display {
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      &[data-display~="#{$device}:none"] {
+        display: none;
+      }
+      &[data-display~="#{$device}:inline"] {
+        display: inline;
+      }
+      &[data-display~="#{$device}:inline-block"] {
+        display: inline-block;
+      }
+      &[data-display~="#{$device}:block"] {
+        display: block;
+      }
+      &[data-display~="#{$device}:flex"] {
+        display: flex;
+      }
+      &[data-display~="#{$device}:grid"] {
+        display: grid;
+      }
+      &[data-display~="#{$device}:unset"] {
+        display: unset;
+      }
+    }
+  }
+}

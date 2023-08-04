@@ -1,0 +1,29 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Acordion
+*/
+.#{$prefix}-acordion {
+  &__body {
+    height: 0;
+    overflow: hidden;
+
+    @include mq(lg) {
+      height: auto;
+      overflow: visible;
+      transition: none;
+      opacity: 1;
+    }
+    &[aria-hidden="true"] {
+      opacity: 0;
+      @include mq(lg) {
+        opacity: 1;
+      }
+    }
+    &[aria-hidden="false"] {
+      opacity: 1;
+    }
+  }
+}

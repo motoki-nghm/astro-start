@@ -1,0 +1,49 @@
+@charset 'UTF-8';
+//============================================
+//  Layout Settings
+//============================================
+
+// Contentの幅
+$content-widths: (
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  xxl: 1440,
+) !default;
+
+// デザインカンプのアートボードサイズ
+$comps: (
+  sm: 375,
+  md: 768,
+  lg: 1440,
+) !default;
+
+// ブレークポイント
+$breakpoints: (
+  min: 0,
+  xxs: 375px,
+  xs: 414px,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1480px,
+) !default;
+
+// 余白
+$space: 8;
+
+$space-range: 30;
+
+// Grid Column
+$column: 12;
+
+// Grid Row
+$row: 6;
+
+// スクロールバー
+$scroll-bar: 0;
+
+// プレフィックス
+$prefix: "ol";

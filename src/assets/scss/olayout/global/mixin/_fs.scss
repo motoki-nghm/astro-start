@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+@use "../setting" as *;
+@use "../function" as *;
+@use "sass:math";
+
+//  Font Size
+//--------------------------------------------
+@mixin fs($min, $fontSize, $max) {
+  $min: strip-unit($min);
+  $fontSize: strip-unit($fontSize);
+  $max: strip-unit($max);
+
+  font-size: calc(#{$fontSize} / 16 * 1rem);
+  font-size: clamp(calc(#{$min} / 16 * 1rem), calc(#{$fontSize} / var(--#{$prefix}-view-point) * 100vw), calc(#{$max} / 16 * 1rem));
+}

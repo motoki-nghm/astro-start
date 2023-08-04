@@ -1,0 +1,36 @@
+@charset 'UTF-8';
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+@mixin animation(
+  $name,
+  $duration: 5s,
+  $timing-function: linear,
+  $delay: 0s,
+  $iteration-count: 1,
+  $direction: normal,
+  $fill-mode: forwards
+) {
+  name: $name;
+  duration: $duration;
+  timing-function: $timing-function;
+  delay: $delay;
+  iteration-count: $iteration-count;
+  direction: $direction;
+  fill-mode: $fill-mode;
+}

@@ -1,0 +1,230 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Text
+-----------------------------------------------------*/
+.#{$prefix}-text {
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      // Align
+      // ----------------------------
+      &[data-align~="#{$device}:left"] {
+        text-align: left;
+      }
+      &[data-align~="#{$device}:center"] {
+        text-align: center;
+      }
+      &[data-align~="#{$device}:right"] {
+        text-align: right;
+      }
+      &[data-align~="#{$device}:justify"] {
+        text-align: justify;
+        text-justify: inter-character;
+      }
+
+      // case
+      // ----------------------------
+      &[data-case~="#{$device}:uppercase"] {
+        text-transform: uppercase;
+      }
+      &[data-case~="#{$device}:normal"] {
+        text-transform: initial;
+      }
+
+      // Word Break
+      // ----------------------------
+      &[data-word~="#{$device}:keep"] {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      &[data-word~="#{$device}:auto"] {
+        word-break: initial;
+        overflow-wrap: initial;
+      }
+
+      // White Space
+      // ----------------------------
+      &[data-space~="#{$device}:nowrap"] {
+        white-space: nowrap;
+      }
+      &[data-space~="#{$device}:wrap"] {
+        white-space: normal;
+      }
+      &[data-space~="#{$device}:pre"] {
+        white-space: pre;
+      }
+      &[data-space~="#{$device}:preWrap"] {
+        white-space: pre-wrap;
+      }
+
+      // Line Height
+      // ----------------------------
+      &[data-line~="#{$device}:-2"] {
+        line-height: 0.5;
+      }
+      &[data-line~="#{$device}:-1"] {
+        line-height: 0.75;
+      }
+      &[data-line~="#{$device}:1"] {
+        line-height: 1;
+      }
+      &[data-line~="#{$device}:+1"] {
+        line-height: 1.25;
+      }
+      &[data-line~="#{$device}:+2"] {
+        line-height: 1.5;
+      }
+      &[data-line~="#{$device}:+3"] {
+        line-height: 1.75;
+      }
+      &[data-line~="#{$device}:+4"] {
+        line-height: 2;
+      }
+      &[data-line~="#{$device}:+5"] {
+        line-height: 2.25;
+      }
+      &[data-line~="#{$device}:+6"] {
+        line-height: 2.5;
+      }
+
+      // Tracking
+      // ----------------------------
+      &[data-tracking~="#{$device}:-2"] {
+        letter-spacing: -0.05em;
+      }
+      &[data-tracking~="#{$device}:-1"] {
+        letter-spacing: -0.025em;
+      }
+      &[data-tracking~="#{$device}:0"] {
+        letter-spacing: 0;
+      }
+      &[data-tracking~="#{$device}:+1"] {
+        letter-spacing: 0.025em;
+      }
+      &[data-tracking~="#{$device}:+2"] {
+        letter-spacing: 0.05em;
+      }
+      &[data-tracking~="#{$device}:+3"] {
+        letter-spacing: 0.1em;
+      }
+      &[data-tracking~="#{$device}:+4"] {
+        letter-spacing: 0.125em;
+      }
+      &[data-tracking~="#{$device}:+5"] {
+        letter-spacing: 0.15em;
+      }
+      &[data-tracking~="#{$device}:+6"] {
+        letter-spacing: 0.175em;
+      }
+      &[data-tracking~="#{$device}:+7"] {
+        letter-spacing: 0.2em;
+      }
+
+      // kerning
+      // ----------------------------
+      &[data-kerning~="#{$device}:normal"] {
+        font-feature-settings: normal;
+      }
+      &[data-kerning~="#{$device}:palt"] {
+        font-feature-settings: "palt";
+      }
+      &[data-kerning~="#{$device}:pkna"] {
+        font-feature-settings: "pkna";
+      }
+
+      // Size
+      // ----------------------------
+      &[data-size~="#{$device}:2xsmall"] {
+        font-size: calc(10 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:xsmall"] {
+        font-size: calc(12 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:small"] {
+        font-size: calc(14 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:normal"] {
+        font-size: calc(16 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:large"] {
+        font-size: calc(18 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:xlarge"] {
+        font-size: calc(20 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:2xlarge"] {
+        font-size: calc(24 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:3xlarge"] {
+        font-size: calc(32 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:4xlarge"] {
+        font-size: calc(40 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:5xlarge"] {
+        font-size: calc(48 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:6xlarge"] {
+        font-size: calc(56 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:7xlarge"] {
+        font-size: calc(64 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:8xlarge"] {
+        font-size: calc(72 / 16 * 1rem);
+      }
+      &[data-size~="#{$device}:9xlarge"] {
+        font-size: calc(80 / 16 * 1rem);
+      }
+
+      // family
+      // ----------------------------
+      &[data-family~="#{$device}:primary"] {
+        font-family: var(--#{$prefix}-primary-font-set, "sans-serif");
+      }
+      &[data-family~="#{$device}:en"] {
+        font-family: var(--#{$prefix}-en-font-set, "sans-serif");
+      }
+
+      // Weight
+      // ----------------------------
+      @for $i from 1 through 9 {
+        &[data-weight~="#{$device}:#{$i * 100}"] {
+          font-weight: $i * 100;
+        }
+      }
+
+      // Style
+      // ----------------------------
+      &[data-style~="#{$device}:normal"] {
+        font-style: normal;
+      }
+      &[data-style~="#{$device}:italic"] {
+        font-style: italic;
+      }
+
+      // Color
+      // ----------------------------
+      &[data-color~="#{$device}:primary"] {
+        color: var(--#{$prefix}-primary-text-color);
+      }
+      &[data-color~="#{$device}:main"] {
+        color: var(--#{$prefix}-main-color);
+      }
+      &[data-color~="#{$device}:accent"] {
+        color: var(--#{$prefix}-accent-color);
+      }
+      &[data-color~="#{$device}:light"] {
+        color: var(--#{$prefix}-light-text-color);
+      }
+      &[data-color~="#{$device}:white"] {
+        color: #fff;
+      }
+      &[data-color~="#{$device}:black"] {
+        color: #000;
+      }
+    }
+  }
+}

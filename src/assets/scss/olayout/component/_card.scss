@@ -1,0 +1,30 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Card
+*/
+.#{$prefix}-card {
+  display: flex;
+  position: relative;
+  flex: 1 1 auto;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    order: 1;
+  }
+
+  &__thumbnail {
+    order: 0;
+  }
+
+  &__image {
+    width: 100%;
+  }
+}

@@ -1,0 +1,70 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+
+/*
+  Container
+-----------------------------------------------------*/
+.#{$prefix}-container {
+  &:not([data-width]) {
+    width: 90%;
+  }
+  &:not([data-max]) {
+    max-width: calc(var(--#{$prefix}-xl-content-width) * 1px);
+  }
+  &:not([data-align]) {
+    margin: 0 auto;
+  }
+
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      &[data-width~="#{$device}:xsmall"] {
+        width: 70%;
+      }
+      &[data-width~="#{$device}:small"] {
+        width: 80%;
+      }
+      &[data-width~="#{$device}:medium"] {
+        width: 90%;
+      }
+      &[data-width~="#{$device}:large"] {
+        width: 95%;
+      }
+      &[data-width~="#{$device}:auto"] {
+        width: auto;
+      }
+
+      &[data-max~="#{$device}:small"] {
+        max-width: calc(var(--#{$prefix}-sm-content-width) * 1px);
+      }
+      &[data-max~="#{$device}:medium"] {
+        max-width: calc(var(--#{$prefix}-md-content-width) * 1px);
+      }
+      &[data-max~="#{$device}:large"] {
+        max-width: calc(var(--#{$prefix}-lg-content-width) * 1px);
+      }
+      &[data-max~="#{$device}:xlarge"] {
+        max-width: calc(var(--#{$prefix}-xl-content-width) * 1px);
+      }
+      &[data-max~="#{$device}:xxlarge"] {
+        max-width: calc(var(--#{$prefix}-xxl-content-width) * 1px);
+      }
+      &[data-max~="#{$device}:none"] {
+        max-width: none;
+      }
+
+      &[data-align~="#{$device}:left"] {
+        margin-left: 0;
+        margin-right: auto;
+      }
+      &[data-align~="#{$device}:right"] {
+        margin-left: auto;
+        margin-right: 0;
+      }
+      &[data-align~="#{$device}:center"] {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+---
+import HamburgerMenu from '../common/hamburgerMenu';
+const links = [
+  { href: '/', label: 'トップ' },
+  { href: '/about', label: 'アバウト' },
+  { href: '/contact', label: 'お問合せ' },
+];
+const { className, hamburger } = Astro.props;
+---
+
+{
+  hamburger ? (
+    <>
+      <ul class={`${className}__list`}>
+        {links.map((link) => (
+          <li class={`${className}__item`}>
+            <a href={link.href} class={`${className}__item`}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <HamburgerMenu client:load links={links} />
+    </>
+  ) : (
+    <>
+      <p>footer</p>
+      <ul class={`${className}__list`}>
+        {links.map((link) => (
+          <li class={`${className}__item`}>
+            <a href={link.href} class={`${className}__link`}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}

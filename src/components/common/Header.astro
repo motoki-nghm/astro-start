@@ -1,0 +1,16 @@
+---
+import MenuList from './MenuList.astro';
+const className = 'header';
+---
+
+<header class="header">
+  <h1>logo</h1>
+  <MenuList className={className} hamburger />
+</header>
+
+<style lang="scss">
+  @use '../../assets/scss/olayout/global' as *;
+  h1 {
+    font-size: pxToRem(40);
+  }
+</style>

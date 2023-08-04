@@ -1,0 +1,21 @@
+---
+import Block from '@components/common/Block.astro';
+import { Counter } from '@components/couter';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="site name" description="site description">
+  <h1 class="js-split">Astro</h1>
+  <Counter client:load />
+  <Block className="red" />
+  <Block className="skyblue" />
+  <Block className="green" />
+</Layout>
+
+<style lang="scss"></style>
+<script>
+  // import { splitAnimation } from '../helper/splitAnimation';
+  // splitAnimation();
+  import { SplitAnimation } from '../helper/splitAnimation';
+  new SplitAnimation();
+</script>

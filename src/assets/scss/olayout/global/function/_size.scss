@@ -1,0 +1,30 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../setting" as *;
+@use "strip-unit" as *;
+
+//  Size
+//--------------------------------------------
+@function pxToRem($size, $base-font-size: 16px) {
+  $size: strip-unit($size);
+  $base-font-size: strip-unit($base-font-size);
+
+  @return calc(#{$size} / #{$base-font-size} * 1rem);
+}
+
+@function pxToEm($size, $base-font-size: 16px) {
+  $size: strip-unit($size);
+  $base-font-size: strip-unit($base-font-size);
+
+  @return calc(#{$size} / #{$base-font-size} * 1em);
+}
+
+@function pxToVw($size) {
+  $size: strip-unit($size);
+  @return calc(#{$size} / var(--#{$prefix}-view-point) * 100vw);
+}
+
+@function pxToVh($size) {
+  $size: strip-unit($size);
+  @return calc(#{$size} / var(--#{$prefix}-view-point) * 100vh);
+}

@@ -1,0 +1,78 @@
+@charset 'UTF-8';
+@use "sass:math";
+@use "../global" as *;
+/*
+  Spacer
+-----------------------------------------------------*/
+.#{$prefix}-spacer {
+  @each $device, $breakpoint in $breakpoints {
+    @include mq($device) {
+      @for $i from 0 through $space-range {
+        // Padding
+        // ----------------------------
+        &[data-py~="#{$device}:#{$i}"] {
+          padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+          padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-pt~="#{$device}:#{$i}"] {
+          padding-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-pb~="#{$device}:#{$i}"] {
+          padding-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-px~="#{$device}:#{$i}"] {
+          padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+          padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-pl~="#{$device}:#{$i}"] {
+          padding-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-pr~="#{$device}:#{$i}"] {
+          padding-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        // Margin
+        // ----------------------------
+        &[data-my~="#{$device}:#{$i}"] {
+          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-mt~="#{$device}:#{$i}"] {
+          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-mb~="#{$device}:#{$i}"] {
+          margin-bottom: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-mx~="#{$device}:#{$i}"] {
+          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+          margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-ml~="#{$device}:#{$i}"] {
+          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        &[data-mr~="#{$device}:#{$i}"] {
+          margin-right: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+
+        // space
+        // ----------------------------
+        &[data-space-x~="#{$device}:#{$i}"] > * + * {
+          margin-left: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+        &[data-space-y~="#{$device}:#{$i}"] > * + * {
+          margin-top: calc(var(--#{$prefix}-space) * #{$i} / 16 * 1rem);
+        }
+      }
+    }
+  }
+}
